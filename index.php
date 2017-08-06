@@ -124,6 +124,7 @@ $app->get(
                 </p>
                 <p><a href="https://github.com/codeguy/Slim-Extras" target="_blank">Browse the Extras Repository</a></p>
             </section>
+            <a href="SlimFrameworkSample/test?json={%22title%22:%22test%22,%22number%22:0}">テストAPI</a>
         </body>
     </html>
 EOT;
@@ -165,7 +166,9 @@ $app->get(
     '/test',
     function () use ($app) {
 
-        // TODO リクエスト取得
+        // リクエスト取得
+        $requestData = json_decode($app->request()->get('json','{}'));
+
 
         // TODO 処理
 
@@ -173,7 +176,8 @@ $app->get(
         $app->response()->headers->set('Content-Type', 'application/json');
         $result = array(
             "title" => 'test',
-            'number' => 0
+            'number' => 0,
+            'requestData'=>$requestData
         );
 
         echo json_encode($result);
