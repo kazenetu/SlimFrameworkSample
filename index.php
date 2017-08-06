@@ -160,6 +160,28 @@ $app->delete(
     }
 );
 
+// 実装テスト
+$app->get(
+    '/test',
+    function () use ($app) {
+
+        // TODO リクエスト取得
+
+        // TODO 処理
+
+        // レスポンスを返す
+        $app->response()->headers->set('Content-Type', 'application/json');
+        $result = array(
+            "title" => 'test',
+            'number' => 0
+        );
+
+        echo json_encode($result);
+    }
+);
+
+
+
 /**
  * Step 4: Run the Slim application
  *
