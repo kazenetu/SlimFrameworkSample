@@ -184,6 +184,30 @@ $app->get(
     }
 );
 
+// URLキー生成テスト
+$app->get(
+    '/url_test',
+    function () use ($app) {
+
+        $date = new DateTime();
+        $key = $date->format('ymdHis');
+
+
+        // レスポンスを返す
+        $app->response()->headers->set('Content-Type', 'application/json');
+        $result = array(
+            "title" => 'test',
+            'number' => 0,
+            'requestData'=>$key,
+            'request16X'=>dechex($date->format('ymd')).dechex($date->format('His')),
+            'request16TIME'=>dechex($date->format('His')),
+            'time'=>time(),
+            'time16X'=>dechex(time()),
+        );
+
+        echo json_encode($result);
+    }
+);
 
 
 /**
