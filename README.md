@@ -1,0 +1,4 @@
+# SlimFrameworkSample
+Slim Frameworkのサンプル実装
+
+Slim Framework2を使ってWebAPIを作ってみるテスト
